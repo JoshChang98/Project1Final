@@ -104,6 +104,7 @@ tags = {'MVO (CAPM)' 'Card MVO (CAPM)' 'MVO (FF)' 'Card MVO (FF)' ...
 
 % Initiate counter for the number of observations per investment period
 currentVal = zeros(NoPeriods, NoStrats * NoModels); 
+tCost = zeros(NoPeriods-1, NoStrats * NoModels)
 toDay = 0;
 
 for t = 1 : NoPeriods
@@ -175,13 +176,13 @@ for t = 1 : NoPeriods
         % period. The first period does not have any cost since you are
         % constructing the portfolios for the 1st time. 
         
-%         if t ~= 1
-%            
-%            tCost(t-1, k) =  (x{k}(:,t)- x{k}(:,t-1) )*0.005 * periodPrices(t,:)
-%             
-%         end
-%         
-%         NoSharesOld{k} = NoShares{k};
+        if t ~= 1
+           
+            tCost(t-1, k) =   periodPrices(t,:)*abs((x{k}(:,t) - x{k}(:,t-1))*0.005)
+            
+        end
+        
+        NoSharesOld{k} = NoShares{k};
         %------------------------------------------------------------------
         
     end
@@ -204,6 +205,20 @@ end
 % deviation), and any other performance and/or risk metric you wish to 
 % include in your report.
 %--------------------------------------------------------------------------
+
+
+plotDates = dates(dates >= datetime('2013-01-01'));
+portf_rets = zeros (length(plotDates)-1, NoStrats * NoModels);
+returns = zeros(6, 1)
+portf_var = zeros(6, 1)
+
+
+
+for k = 1 : NoModels * NoStrats
+    portf_rets(:, k) =  (portfValue(2:(length(plotDates)),k)- portfValue(1:(length(plotDates)-1),k)) ./ portfValue(1:(length(plotDates)-1),k) + ones(156, 1) ;
+    returns(k) = (geomean(portf_rets(:, k)) -1)
+    portf_var(k) = var( portf_rets(:, k))
+end
 
 
 
