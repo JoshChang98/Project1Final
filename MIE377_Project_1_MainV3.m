@@ -107,6 +107,10 @@ currentVal = zeros(NoPeriods, NoStrats * NoModels);
 tCost = zeros(NoPeriods-1, NoStrats * NoModels)
 toDay = 0;
 
+portf_rets = zeros (NoPeriods, NoStrats * NoModels);
+
+returns = zeros(6, 1)
+
 for t = 1 : NoPeriods
     
     % Subset the returns and factor returns corresponding to the current
@@ -178,8 +182,11 @@ for t = 1 : NoPeriods
         
         if t ~= 1
            
-            tCost(t-1, k) =   periodPrices(t,:)*abs((x{k}(:,t) - x{k}(:,t-1))*0.005)
+            %tCost(t-1, k) =   sum(portfValue(fromDay:toDay,k))*abs((x{k}(:,t) - x{k}(:,t-1))*0.005)
+            tCost(t-1,k) = sum(abs(NoShares{k} - NoSharesOld{k} )* periodPrices(t)* 0.005)
             
+%             portf_rets(t, k) =  (portfValue(2:(length(plotDates)),k)- portfValue(1:(length(plotDates)-1),k)) ./ portfValue(1:(length(plotDates)-1),k) + ones(156, 1) ;
+            portf_rets(t, k) = (NoShares{k}* periodPrices(t) - NoSharesOld{k}* periodPrices(t-1) - tCost(t-1, k)) ./ NoSharesOld{k}* periodPrices(t-1) + 1
         end
         
         NoSharesOld{k} = NoShares{k};
@@ -208,20 +215,29 @@ end
 
 
 plotDates = dates(dates >= datetime('2013-01-01'));
-portf_rets = zeros (length(plotDates)-1, NoStrats * NoModels);
 returns = zeros(6, 1)
 portf_var = zeros(6, 1)
 
 
 
 for k = 1 : NoModels * NoStrats
+    returns(k) = (geomean(portf_rets(:, k)))^52 -1
+    portf_var(k) = var( portf_rets(:, k))*52
+end
+
+for k = 1 : NoModels * NoStrats    
     portf_rets(:, k) =  (portfValue(2:(length(plotDates)),k)- portfValue(1:(length(plotDates)-1),k)) ./ portfValue(1:(length(plotDates)-1),k) + ones(156, 1) ;
     returns(k) = (geomean(portf_rets(:, k)))^52 -1
     portf_var(k) = var( portf_rets(:, k))*52
 end
 
 
-
+%Total transactions costs for each model-strategy
+average_tCost = zeros(1,NoModels * NoStrats);
+for k = 1 : NoModels * NoStrats
+    average_tCost(1,k) = geomean(tCost(:,k));
+end
+average_tCost
 %--------------------------------------------------------------------------
 % 4.2 Plot the portfolio values 
 % 
@@ -261,7 +277,7 @@ print(fig1,'fileName','-dpng','-r0');
 %--------------------------------------------------------------------------
 % 4.3 Plot the portfolio weights 
 %--------------------------------------------------------------------------
-
+%%%%%%%%%%%%%%%%%%%%%
 % MVO (CAPM) Plot
 fig2 = figure(2);
 area(x{1}')
@@ -281,6 +297,109 @@ set(fig2,'PaperPositionMode','Auto','PaperUnits','Inches',...
 
 % If you want to save the figure as .png for use in MS Word
 print(fig2,'fileName2','-dpng','-r0');
+%%%%%%%%%%%%%%%%%%%%%
+% MVO_Card (CAPM) Plot
+fig3 = figure(3);
+area(x{2}')
+legend(tickers, 'Location', 'eastoutside','FontSize',12);
+title('MVO Card (CAPM) portfolio weights', 'FontSize', 14)
+ylabel('Weights','interpreter','latex','FontSize',12);
+xlabel('Rebalance period','interpreter','latex','FontSize',12);
+
+% Define the plot size in inches
+set(fig3,'Units','Inches', 'Position', [0 0 8, 5]);
+pos1 = get(fig3,'Position');
+set(fig3,'PaperPositionMode','Auto','PaperUnits','Inches',...
+    'PaperSize',[pos1(3), pos1(4)]);
+
+% If you want to save the figure as .pdf for use in LaTeX
+% print(fig2,'fileName2','-dpdf','-r0');
+
+% If you want to save the figure as .png for use in MS Word
+print(fig3,'fileName2','-dpng','-r0');
+% %%%%%%%%%%%%%%%%%%%%%%%%
+% MVO (FF) Plot
+fig4 = figure(4);
+area(x{3}')
+legend(tickers, 'Location', 'eastoutside','FontSize',12);
+title('MVO (FF) portfolio weights', 'FontSize', 14)
+ylabel('Weights','interpreter','latex','FontSize',12);
+xlabel('Rebalance period','interpreter','latex','FontSize',12);
+
+% Define the plot size in inches
+set(fig4,'Units','Inches', 'Position', [0 0 8, 5]);
+pos1 = get(fig4,'Position');
+set(fig4,'PaperPositionMode','Auto','PaperUnits','Inches',...
+    'PaperSize',[pos1(3), pos1(4)]);
+
+% If you want to save the figure as .pdf for use in LaTeX
+% print(fig2,'fileName2','-dpdf','-r0');
+
+% If you want to save the figure as .png for use in MS Word
+print(fig4,'fileName2','-dpng','-r0');
+% %%%%%%%%%%%%%%%%%%%%%
+% MVO_Card (FF) Plot
+fig5 = figure(5);
+area(x{4}')
+legend(tickers, 'Location', 'eastoutside','FontSize',12);
+title('MVO Card (FF) portfolio weights', 'FontSize', 14)
+ylabel('Weights','interpreter','latex','FontSize',12);
+xlabel('Rebalance period','interpreter','latex','FontSize',12);
+
+% Define the plot size in inches
+set(fig5,'Units','Inches', 'Position', [0 0 8, 5]);
+pos1 = get(fig5,'Position');
+set(fig5,'PaperPositionMode','Auto','PaperUnits','Inches',...
+    'PaperSize',[pos1(3), pos1(4)]);
+
+% If you want to save the figure as .pdf for use in LaTeX
+% print(fig2,'fileName2','-dpdf','-r0');
+
+% If you want to save the figure as .png for use in MS Word
+print(fig5,'fileName2','-dpng','-r0');
+
+% %%%%%%%%%%%%%%%%%%%%%
+% MVO (PCA) Plot
+fig6 = figure(6);
+area(x{5}')
+legend(tickers, 'Location', 'eastoutside','FontSize',12);
+title('MVO (PCA) portfolio weights', 'FontSize', 14)
+ylabel('Weights','interpreter','latex','FontSize',12);
+xlabel('Rebalance period','interpreter','latex','FontSize',12);
+
+% Define the plot size in inches
+set(fig6,'Units','Inches', 'Position', [0 0 8, 5]);
+pos1 = get(fig6,'Position');
+set(fig6,'PaperPositionMode','Auto','PaperUnits','Inches',...
+    'PaperSize',[pos1(3), pos1(4)]);
+
+% If you want to save the figure as .pdf for use in LaTeX
+% print(fig6,'fileName2','-dpdf','-r0');
+
+% If you want to save the figure as .png for use in MS Word
+print(fig6,'fileName2','-dpng','-r0');
+% %%%%%%%%%%%%%%%%%%%%%
+% % MVO_Card (PCA) Plot
+% fig7 = figure(7);
+% area(x{6}')
+% legend(tickers, 'Location', 'eastoutside','FontSize',12);
+% title('MVO (CAPM) portfolio weights', 'FontSize', 14)
+% ylabel('Weights','interpreter','latex','FontSize',12);
+% xlabel('Rebalance period','interpreter','latex','FontSize',12);
+% 
+% % Define the plot size in inches
+% set(fig2,'Units','Inches', 'Position', [0 0 8, 5]);
+% pos1 = get(fig2,'Position');
+% set(fig2,'PaperPositionMode','Auto','PaperUnits','Inches',...
+%     'PaperSize',[pos1(3), pos1(4)]);
+% 
+% % If you want to save the figure as .pdf for use in LaTeX
+% % print(fig2,'fileName2','-dpdf','-r0');
+% 
+% % If you want to save the figure as .png for use in MS Word
+% print(fig2,'fileName2','-dpng','-r0');
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Program End
