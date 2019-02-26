@@ -216,7 +216,7 @@ portf_var = zeros(6, 1)
 
 for k = 1 : NoModels * NoStrats
     portf_rets(:, k) =  (portfValue(2:(length(plotDates)),k)- portfValue(1:(length(plotDates)-1),k)) ./ portfValue(1:(length(plotDates)-1),k) + ones(156, 1) ;
-    returns(k) = (geomean(portf_rets(:, k)) -1)
+    returns(k) = (geomean(portf_rets(:, k)))^52 -1
     portf_var(k) = var( portf_rets(:, k))
 end
 
