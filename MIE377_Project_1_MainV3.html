@@ -1,0 +1,1694 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0094)file://srvd/homes%24/changj54/Documents/MIE377/Project1Final/html/MIE377_Project_1_MainV3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MIE377_Project_1_MainV3</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-02-26"><meta name="DC.source" content="MIE377_Project_1_MainV3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="file://srvd/homes%24/changj54/Documents/MIE377/Project1Final/html/MIE377_Project_1_MainV3.html#1">MIE377 (Winter 2019) - Project 1</a></li><li><a href="file://srvd/homes%24/changj54/Documents/MIE377/Project1Final/html/MIE377_Project_1_MainV3.html#2">1. Read input files</a></li><li><a href="file://srvd/homes%24/changj54/Documents/MIE377/Project1Final/html/MIE377_Project_1_MainV3.html#3">2. Define your initial parameters</a></li><li><a href="file://srvd/homes%24/changj54/Documents/MIE377/Project1Final/html/MIE377_Project_1_MainV3.html#4">3. Construct and rebalance your portfolios</a></li><li><a href="file://srvd/homes%24/changj54/Documents/MIE377/Project1Final/html/MIE377_Project_1_MainV3.html#5">4. Results</a></li></ul></div><h2 id="1">MIE377 (Winter 2019) - Project 1</h2><p>The purpose of this program is to implement the following factor models a) CAPM b) Fama-French 3-factor model c) Principal component analysis model</p><p>and to use these models to estimate the asset expected returns and covariance matrix. These parameters will then be used to test the out-of-sample performance of two portfolio optimization models: 1. MVO 2. MVO with cardinality constraint</p><p>Use can use this template to write your program.</p><p>Student Name: Student ID:</p><pre class="codeinput">clc
+clear <span class="string">all</span>
+format <span class="string">short</span>
+
+<span class="comment">% Program Start</span>
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+</pre><h2 id="2">1. Read input files</h2><pre class="codeinput"><span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+
+<span class="comment">% Load the stock weekly prices</span>
+adjClose = readtable(<span class="string">'Project1_Data_adjClose.csv'</span>);
+adjClose.Properties.RowNames = cellstr(datetime(adjClose.Date));
+adjClose.Date = [];
+
+<span class="comment">% Load the factors weekly returns</span>
+factorRet = readtable(<span class="string">'Project1_Data_FF_factors.csv'</span>);
+factorRet.Properties.RowNames = cellstr(datetime(factorRet.Date));
+factorRet.Date = [];
+
+riskFree = factorRet(:,4);
+factorRet = factorRet(:,1:3);
+
+<span class="comment">% Identify the tickers and the dates</span>
+tickers = adjClose.Properties.VariableNames';
+dates   = datetime(factorRet.Properties.RowNames);
+
+<span class="comment">% Calculate the stocks' weekly EXCESS returns</span>
+prices  = table2array(adjClose);
+returns = ( prices(2:end,:) - prices(1:end-1,:) ) ./ prices(1:end-1,:);
+returns = returns - ( diag( table2array(riskFree) ) * ones( size(returns) ) );
+returns = array2table(returns);
+returns.Properties.VariableNames = tickers;
+returns.Properties.RowNames = cellstr(datetime(factorRet.Properties.RowNames));
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+</pre><h2 id="3">2. Define your initial parameters</h2><pre class="codeinput"><span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+
+<span class="comment">% Initial budget to invest</span>
+initialVal = 100;
+
+<span class="comment">% Start of in-sample calibration period</span>
+calStart = datetime(<span class="string">'2012-01-01'</span>);
+calEnd   = calStart + calmonths(12) - days(1);
+
+<span class="comment">% Start of out-of-sample test period</span>
+testStart = datetime(<span class="string">'2013-01-01'</span>);
+testEnd   = testStart + calmonths(6) - days(1);
+
+<span class="comment">% Number of investment periods (each investment period is 6 months long)</span>
+NoPeriods = 6;
+
+<span class="comment">% Factor models</span>
+<span class="comment">% Note: You must populate the functios CAPM.m, FF.m and PCA.m with your</span>
+<span class="comment">% own code.</span>
+FMList = {<span class="string">'CAPM'</span> <span class="string">'FF'</span> <span class="string">'PCA'</span>};
+FMList = cellfun(@str2func, FMList, <span class="string">'UniformOutput'</span>, false);
+NoModels = length(FMList);
+
+<span class="comment">% Investment strategies</span>
+<span class="comment">% Note: You must populate the functios MVO.m and MVO_card.m with your own</span>
+<span class="comment">% code to construct the optimal portfolios.</span>
+
+invList = {<span class="string">'MVO'</span> <span class="string">'MVO_card'</span>};
+<span class="comment">%invList = {'MVO_card'};</span>
+invList = cellfun(@str2func, invList, <span class="string">'UniformOutput'</span>, false);
+NoStrats = length(invList);
+
+<span class="comment">% Cardinality constraint: state the maximum number of assets</span>
+card = 12;
+
+<span class="comment">% Tags for factor models under different investment strategies</span>
+tags = {<span class="string">'MVO (CAPM)'</span> <span class="string">'Card MVO (CAPM)'</span> <span class="string">'MVO (FF)'</span> <span class="string">'Card MVO (FF)'</span> <span class="keyword">...</span>
+        <span class="string">'MVO (PCA)'</span> <span class="string">'Card MVO (PCA)'</span>};
+<span class="comment">% tags = {'MVO (CAPM)' 'MVO (FF)' 'MVO (PCA)' };</span>
+
+<span class="comment">%tags = { 'Card MVO (CAPM)' 'Card MVO (FF)' 'Card MVO (PCA)'};</span>
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+</pre><h2 id="4">3. Construct and rebalance your portfolios</h2><p>Here you will estimate your input parameters (exp. returns, cov. matrix, etc) from the Fama-French factor models. You will have to re-estimate your parameters at the start of each rebalance period, and then re-optimize and rebalance your portfolios accordingly.</p><pre class="codeinput"><span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+
+<span class="comment">% Initiate counter for the number of observations per investment period</span>
+currentVal = zeros(NoPeriods, NoStrats * NoModels);
+tCost = zeros(NoPeriods-1, NoStrats * NoModels)
+toDay = 0;
+
+<span class="keyword">for</span> t = 1 : NoPeriods
+
+    <span class="comment">% Subset the returns and factor returns corresponding to the current</span>
+    <span class="comment">% calibration period.</span>
+    periodReturns = table2array( returns( calStart &lt;= dates &amp; dates &lt;= calEnd, :) );
+    periodFactRet = table2array( factorRet( calStart &lt;= dates &amp; dates &lt;= calEnd, :) );
+    currentPrices = table2array( adjClose( ( calEnd - days(7) ) &lt;= dates <span class="keyword">...</span>
+                                                    &amp; dates &lt;= calEnd, :) )';
+
+    <span class="comment">% Subset the prices corresponding to the current out-of-sample test</span>
+    <span class="comment">% period.</span>
+    periodPrices = table2array( adjClose( testStart &lt;= dates &amp; dates &lt;= testEnd,:) );
+
+    <span class="comment">% Set the initial value of the portfolio or update the portfolio value</span>
+    <span class="keyword">if</span> t == 1
+        currentVal= ones(1, 6);
+        currentVal(t,:) = initialVal;
+
+
+    <span class="keyword">else</span>
+        <span class="keyword">for</span> k = 1 : (NoStrats * NoModels)
+            temp = transpose(NoShares{k})* currentPrices;
+            currentVal(t,k) =   temp;
+
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    <span class="comment">% Update counter for the number of observations per investment period</span>
+    fromDay = toDay + 1;
+    toDay   = toDay + size(periodPrices,1);
+
+    <span class="comment">% Calculate 'mu' and 'Q' using the 3 factor models.</span>
+    <span class="comment">% Note: You need to write the code for the 3 factor model functions.</span>
+    <span class="keyword">for</span> i = 1 : NoModels
+
+        [mu{i}, Q{i}] = FMList{i}(periodReturns, periodFactRet);
+
+    <span class="keyword">end</span>
+
+    <span class="comment">% Optimize your portfolios to get the weights 'x'</span>
+    <span class="comment">% Note: You need to write the code for the 2 portfolio optimization</span>
+    <span class="comment">% functions.</span>
+    <span class="keyword">for</span> i = 1 : NoModels
+
+        <span class="comment">% Define the target return</span>
+        targetRet = mean(mu{i});
+
+        <span class="keyword">for</span> j = 1: NoStrats
+
+             k = j + (i - 1) * 2;;
+
+            x{k}(:,t) = invList{j}(mu{i}, Q{i}, targetRet, card);
+
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    <span class="comment">% Calculate the optimal number of shares of each stock you should hold</span>
+    <span class="keyword">for</span> k = 1 : NoStrats * NoModels
+        <span class="comment">% Number of shares your portfolio holds per stock</span>
+        NoShares{k} = x{k}(:,t) .* currentVal(t,k) ./ currentPrices;
+
+        <span class="comment">% Weekly portfolio value during the out-of-sample window</span>
+        portfValue(fromDay:toDay,k) = periodPrices * NoShares{k};
+
+        <span class="comment">%------------------------------------------------------------------</span>
+        <span class="comment">% Calculate your transaction costs for the current rebalance</span>
+        <span class="comment">% period. The first period does not have any cost since you are</span>
+        <span class="comment">% constructing the portfolios for the 1st time.</span>
+
+        <span class="keyword">if</span> t ~= 1
+
+            tCost(t-1, k) =   periodPrices(t,:)*abs((x{k}(:,t) - x{k}(:,t-1))*0.005)
+
+        <span class="keyword">end</span>
+
+        NoSharesOld{k} = NoShares{k};
+        <span class="comment">%------------------------------------------------------------------</span>
+
+    <span class="keyword">end</span>
+
+    <span class="comment">% Update your calibration and out-of-sample test periods</span>
+    calStart = calStart + calmonths(6);
+    calEnd   = calStart + calmonths(12) - days(1);
+
+    testStart = testStart + calmonths(6);
+    testEnd   = testStart + calmonths(6) - days(1);
+
+<span class="keyword">end</span>
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+</pre><pre class="codeoutput">tCost =
+
+     0     0     0     0     0     0
+     0     0     0     0     0     0
+     0     0     0     0     0     0
+     0     0     0     0     0     0
+     0     0     0     0     0     0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+    0.0637
+         0
+         0
+    0.2078
+    0.1171
+         0
+         0
+         0
+         0
+         0
+    0.1935
+    0.1903
+         0
+         0
+    0.0766
+    0.0973
+    0.0536
+         0
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+    0.0655
+         0
+         0
+    0.2143
+    0.1325
+         0
+         0
+         0
+    0.0109
+         0
+    0.1651
+    0.1729
+         0
+         0
+    0.0812
+    0.0929
+    0.0647
+         0
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+    0.0339
+         0
+    0.0726
+    0.0312
+         0
+    0.1614
+    0.0773
+    0.0217
+         0
+         0
+    0.0339
+    0.0641
+    0.1342
+    0.1836
+         0
+         0
+    0.0988
+    0.0874
+         0
+         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+         0
+    0.0899
+    0.0537
+    0.2497
+    0.0848
+         0
+         0
+         0
+         0
+         0
+    0.0948
+    0.2140
+    0.0484
+         0
+    0.1583
+         0
+    0.0017
+    0.0047
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+    0.0282
+         0
+         0
+    0.1145
+    0.0377
+    0.1662
+    0.0881
+         0
+    0.0772
+    0.0145
+         0
+         0
+    0.0648
+    0.1602
+    0.0870
+         0
+    0.1321
+         0
+         0
+    0.0293
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+    0.0345
+         0
+         0
+    0.0985
+    0.0245
+    0.1923
+    0.0534
+         0
+    0.0737
+         0
+         0
+    0.0437
+    0.0557
+    0.1940
+    0.1213
+         0
+    0.0791
+         0
+         0
+    0.0294
+
+
+tCost =
+
+    0.1028         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+         0
+    0.1043
+    0.0694
+    0.1491
+    0.1248
+         0
+    0.0595
+         0
+    0.0281
+         0
+    0.0589
+    0.1073
+    0.1143
+         0
+    0.0860
+         0
+    0.0547
+    0.0435
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+         0
+    0.1065
+    0.0585
+    0.1181
+    0.1030
+         0
+    0.0997
+         0
+    0.0595
+         0
+    0.0575
+    0.1027
+    0.1238
+         0
+    0.0678
+         0
+    0.0510
+    0.0520
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+         0
+    0.1374
+         0
+    0.1087
+    0.1032
+         0
+    0.0959
+    0.0477
+    0.0453
+    0.0407
+    0.0541
+    0.1106
+    0.1364
+         0
+    0.0771
+         0
+         0
+    0.0430
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+    0.0681
+         0
+    0.3101
+    0.0462
+    0.0958
+         0
+         0
+    0.0558
+         0
+    0.0959
+    0.0354
+         0
+         0
+    0.0469
+         0
+    0.0815
+    0.0734
+    0.0577
+    0.0331
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+    0.0666
+         0
+    0.3097
+    0.0333
+    0.0822
+         0
+         0
+    0.0693
+         0
+    0.0974
+    0.0345
+         0
+         0
+    0.0391
+         0
+    0.0906
+    0.0609
+    0.0735
+    0.0427
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+    0.0694
+         0
+    0.2444
+         0
+    0.0998
+         0
+         0
+    0.1141
+         0
+    0.0827
+    0.0517
+    0.0428
+         0
+    0.0575
+         0
+    0.0688
+    0.0560
+    0.0893
+    0.0234
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317         0         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604         0         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011         0         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485         0         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316         0
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+         0         0         0         0         0         0
+         0         0         0         0         0         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+         0
+    0.1981
+    0.0717
+    0.1619
+    0.0795
+         0
+         0
+         0
+    0.0063
+    0.0916
+         0
+         0
+         0
+         0
+    0.2082
+    0.0722
+    0.0634
+    0.0470
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+    0.0080
+         0
+    0.0191
+    0.2160
+    0.0550
+    0.1428
+    0.0544
+         0
+         0
+         0
+    0.0062
+    0.0927
+         0
+         0
+         0
+         0
+    0.2262
+    0.0666
+    0.0609
+    0.0522
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+    0.0614
+    0.1777
+         0
+    0.1464
+    0.0534
+         0
+    0.0677
+         0
+         0
+    0.0769
+    0.0363
+    0.0413
+         0
+         0
+    0.1780
+    0.0575
+    0.0607
+    0.0426
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059         0         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041         0         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067         0         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985         0         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985    0.2135         0
+         0         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985    0.2135    0.2864
+         0         0         0         0         0         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+         0
+         0
+    0.0221
+    0.1181
+    0.0844
+    0.1567
+    0.0775
+         0
+         0
+         0
+    0.0159
+    0.0763
+         0
+    0.0338
+         0
+         0
+    0.2261
+    0.0893
+    0.0362
+    0.0637
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+    0.0247
+         0
+    0.0473
+    0.1433
+    0.0625
+    0.1191
+    0.0433
+         0
+         0
+         0
+         0
+    0.0820
+         0
+    0.0489
+         0
+         0
+    0.2381
+    0.1065
+    0.0337
+    0.0506
+
+Warning: Your Hessian is not symmetric. Resetting H=(H+H')/2. 
+
+Minimum found that satisfies the constraints.
+
+Optimization completed because the objective function is non-decreasing in 
+feasible directions, to within the selected value of the optimality tolerance,
+and constraints are satisfied to within the default value of the constraint tolerance.
+
+
+
+
+x =
+
+    0.0330
+         0
+         0
+    0.1266
+         0
+    0.1390
+    0.0586
+    0.0713
+    0.0859
+         0
+         0
+    0.0718
+    0.0419
+    0.0951
+         0
+         0
+    0.1679
+    0.0683
+         0
+    0.0407
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985    0.2135    0.2864
+    0.0907         0         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985    0.2135    0.2864
+    0.0907    0.1038         0         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985    0.2135    0.2864
+    0.0907    0.1038    0.1086         0         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985    0.2135    0.2864
+    0.0907    0.1038    0.1086    0.1176         0         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985    0.2135    0.2864
+    0.0907    0.1038    0.1086    0.1176    0.1303         0
+
+
+tCost =
+
+    0.1028    0.1792    0.1567    0.2257    0.1113    0.2026
+    0.1984    0.1945    0.1196    0.1316    0.1532    0.1525
+    0.3317    0.3604    0.3011    0.3485    0.2316    0.2869
+    0.2059    0.3041    0.2067    0.2985    0.2135    0.2864
+    0.0907    0.1038    0.1086    0.1176    0.1303    0.1402
+
+</pre><h2 id="5">4. Results</h2><pre class="codeinput"><span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+
+<span class="comment">%--------------------------------------------------------------------------</span>
+<span class="comment">% 4.1 Calculate the portfolio average return, variance (or standard</span>
+<span class="comment">% deviation), and any other performance and/or risk metric you wish to</span>
+<span class="comment">% include in your report.</span>
+<span class="comment">%--------------------------------------------------------------------------</span>
+
+
+plotDates = dates(dates &gt;= datetime(<span class="string">'2013-01-01'</span>));
+portf_rets = zeros (length(plotDates)-1, NoStrats * NoModels);
+returns = zeros(6, 1)
+portf_var = zeros(6, 1)
+
+
+
+<span class="keyword">for</span> k = 1 : NoModels * NoStrats
+    portf_rets(:, k) =  (portfValue(2:(length(plotDates)),k)- portfValue(1:(length(plotDates)-1),k)) ./ portfValue(1:(length(plotDates)-1),k) + ones(156, 1) ;
+    returns(k) = (geomean(portf_rets(:, k)))^52 -1
+    portf_var(k) = var( portf_rets(:, k))*52
+<span class="keyword">end</span>
+
+
+
+<span class="comment">%--------------------------------------------------------------------------</span>
+<span class="comment">% 4.2 Plot the portfolio values</span>
+<span class="comment">%</span>
+<span class="comment">% Note: The code below plots all portfolios onto a single plot. However,</span>
+<span class="comment">% you may want to split this into multiple plots for clarity, or to</span>
+<span class="comment">% compare a subset of the portfolios.</span>
+<span class="comment">%--------------------------------------------------------------------------</span>
+plotDates = dates(dates &gt;= datetime(<span class="string">'2013-01-01'</span>));
+
+fig1 = figure(1);
+
+<span class="keyword">for</span> k = 1 : NoModels * NoStrats
+
+    plot( plotDates, portfValue(:,k) )
+    hold <span class="string">on</span>
+
+<span class="keyword">end</span>
+
+legend(tags, <span class="string">'Location'</span>, <span class="string">'eastoutside'</span>,<span class="string">'FontSize'</span>,12);
+datetick(<span class="string">'x'</span>,<span class="string">'dd-mmm-yyyy'</span>,<span class="string">'keepticks'</span>,<span class="string">'keeplimits'</span>);
+set(gca,<span class="string">'XTickLabelRotation'</span>,30);
+title(<span class="string">'Portfolio value'</span>, <span class="string">'FontSize'</span>, 14)
+ylabel(<span class="string">'Value'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>,<span class="string">'FontSize'</span>,12);
+
+<span class="comment">% Define the plot size in inches</span>
+set(fig1,<span class="string">'Units'</span>,<span class="string">'Inches'</span>, <span class="string">'Position'</span>, [0 0 8, 5]);
+pos1 = get(fig1,<span class="string">'Position'</span>);
+set(fig1,<span class="string">'PaperPositionMode'</span>,<span class="string">'Auto'</span>,<span class="string">'PaperUnits'</span>,<span class="string">'Inches'</span>,<span class="keyword">...</span>
+    <span class="string">'PaperSize'</span>,[pos1(3), pos1(4)]);
+
+<span class="comment">% If you want to save the figure as .pdf for use in LaTeX</span>
+<span class="comment">% print(fig1,'fileName','-dpdf','-r0');</span>
+
+<span class="comment">% If you want to save the figure as .png for use in MS Word</span>
+print(fig1,<span class="string">'fileName'</span>,<span class="string">'-dpng'</span>,<span class="string">'-r0'</span>);
+
+<span class="comment">%--------------------------------------------------------------------------</span>
+<span class="comment">% 4.3 Plot the portfolio weights</span>
+<span class="comment">%--------------------------------------------------------------------------</span>
+
+<span class="comment">% MVO (CAPM) Plot</span>
+fig2 = figure(2);
+area(x{1}')
+legend(tickers, <span class="string">'Location'</span>, <span class="string">'eastoutside'</span>,<span class="string">'FontSize'</span>,12);
+title(<span class="string">'MVO (CAPM) portfolio weights'</span>, <span class="string">'FontSize'</span>, 14)
+ylabel(<span class="string">'Weights'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>,<span class="string">'FontSize'</span>,12);
+xlabel(<span class="string">'Rebalance period'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>,<span class="string">'FontSize'</span>,12);
+
+<span class="comment">% Define the plot size in inches</span>
+set(fig2,<span class="string">'Units'</span>,<span class="string">'Inches'</span>, <span class="string">'Position'</span>, [0 0 8, 5]);
+pos1 = get(fig2,<span class="string">'Position'</span>);
+set(fig2,<span class="string">'PaperPositionMode'</span>,<span class="string">'Auto'</span>,<span class="string">'PaperUnits'</span>,<span class="string">'Inches'</span>,<span class="keyword">...</span>
+    <span class="string">'PaperSize'</span>,[pos1(3), pos1(4)]);
+
+<span class="comment">% If you want to save the figure as .pdf for use in LaTeX</span>
+<span class="comment">% print(fig2,'fileName2','-dpdf','-r0');</span>
+
+<span class="comment">% If you want to save the figure as .png for use in MS Word</span>
+print(fig2,<span class="string">'fileName2'</span>,<span class="string">'-dpng'</span>,<span class="string">'-r0'</span>);
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">% Program End</span>
+</pre><pre class="codeoutput">returns =
+
+     0
+     0
+     0
+     0
+     0
+     0
+
+
+portf_var =
+
+     0
+     0
+     0
+     0
+     0
+     0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+
+returns =
+
+    0.0995
+         0
+         0
+         0
+         0
+         0
+
+
+portf_var =
+
+    0.0107
+         0
+         0
+         0
+         0
+         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+
+returns =
+
+    0.0995
+    0.1145
+         0
+         0
+         0
+         0
+
+
+portf_var =
+
+    0.0107
+    0.0113
+         0
+         0
+         0
+         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+
+returns =
+
+    0.0995
+    0.1145
+    0.1002
+         0
+         0
+         0
+
+
+portf_var =
+
+    0.0107
+    0.0113
+    0.0100
+         0
+         0
+         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+
+returns =
+
+    0.0995
+    0.1145
+    0.1002
+    0.1228
+         0
+         0
+
+
+portf_var =
+
+    0.0107
+    0.0113
+    0.0100
+    0.0108
+         0
+         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+
+returns =
+
+    0.0995
+    0.1145
+    0.1002
+    0.1228
+    0.1032
+         0
+
+
+portf_var =
+
+    0.0107
+    0.0113
+    0.0100
+    0.0108
+    0.0098
+         0
+
+Warning: The function "geomean" has been renamed "geo_mean". Please start
+using the new name. The old name will be removed in a future release. 
+
+returns =
+
+    0.0995
+    0.1145
+    0.1002
+    0.1228
+    0.1032
+    0.1157
+
+
+portf_var =
+
+    0.0107
+    0.0113
+    0.0100
+    0.0108
+    0.0098
+    0.0103
+
+</pre><img vspace="5" hspace="5" src="./MIE377_Project_1_MainV3_files/MIE377_Project_1_MainV3_01.png" alt=""> <img vspace="5" hspace="5" src="./MIE377_Project_1_MainV3_files/MIE377_Project_1_MainV3_02.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB® R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MIE377 (Winter 2019) - Project 1
+% The purpose of this program is to implement the following factor models
+% a) CAPM
+% b) Fama-French 3-factor model
+% c) Principal component analysis model
+% 
+% and to use these models to estimate the asset expected returns and 
+% covariance matrix. These parameters will then be used to test the 
+% out-of-sample performance of two portfolio optimization models: 
+% 1. MVO
+% 2. MVO with cardinality constraint
+%
+% Use can use this template to write your program.
+%
+% Student Name:
+% Student ID:
+
+clc
+clear all
+format short
+
+% Program Start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 1. Read input files
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Load the stock weekly prices
+adjClose = readtable('Project1_Data_adjClose.csv');
+adjClose.Properties.RowNames = cellstr(datetime(adjClose.Date));
+adjClose.Date = [];
+
+% Load the factors weekly returns
+factorRet = readtable('Project1_Data_FF_factors.csv');
+factorRet.Properties.RowNames = cellstr(datetime(factorRet.Date));
+factorRet.Date = [];
+
+riskFree = factorRet(:,4);
+factorRet = factorRet(:,1:3);
+
+% Identify the tickers and the dates 
+tickers = adjClose.Properties.VariableNames';
+dates   = datetime(factorRet.Properties.RowNames);
+
+% Calculate the stocks' weekly EXCESS returns
+prices  = table2array(adjClose);
+returns = ( prices(2:end,:) - prices(1:end-1,:) ) ./ prices(1:end-1,:);
+returns = returns - ( diag( table2array(riskFree) ) * ones( size(returns) ) );
+returns = array2table(returns);
+returns.Properties.VariableNames = tickers;
+returns.Properties.RowNames = cellstr(datetime(factorRet.Properties.RowNames));
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 2. Define your initial parameters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Initial budget to invest
+initialVal = 100;
+
+% Start of in-sample calibration period 
+calStart = datetime('2012-01-01');
+calEnd   = calStart + calmonths(12) - days(1);
+
+% Start of out-of-sample test period 
+testStart = datetime('2013-01-01');
+testEnd   = testStart + calmonths(6) - days(1);
+
+% Number of investment periods (each investment period is 6 months long)
+NoPeriods = 6;
+
+% Factor models
+% Note: You must populate the functios CAPM.m, FF.m and PCA.m with your
+% own code.
+FMList = {'CAPM' 'FF' 'PCA'};
+FMList = cellfun(@str2func, FMList, 'UniformOutput', false);
+NoModels = length(FMList);
+
+% Investment strategies
+% Note: You must populate the functios MVO.m and MVO_card.m with your own
+% code to construct the optimal portfolios. 
+
+invList = {'MVO' 'MVO_card'};
+%invList = {'MVO_card'};
+invList = cellfun(@str2func, invList, 'UniformOutput', false);
+NoStrats = length(invList);
+
+% Cardinality constraint: state the maximum number of assets
+card = 12;
+
+% Tags for factor models under different investment strategies
+tags = {'MVO (CAPM)' 'Card MVO (CAPM)' 'MVO (FF)' 'Card MVO (FF)' ...
+        'MVO (PCA)' 'Card MVO (PCA)'};
+% tags = {'MVO (CAPM)' 'MVO (FF)' 'MVO (PCA)' };
+
+%tags = { 'Card MVO (CAPM)' 'Card MVO (FF)' 'Card MVO (PCA)'};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 3. Construct and rebalance your portfolios
+%
+% Here you will estimate your input parameters (exp. returns, cov. matrix,
+% etc) from the Fama-French factor models. You will have to re-estimate 
+% your parameters at the start of each rebalance period, and then 
+% re-optimize and rebalance your portfolios accordingly. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Initiate counter for the number of observations per investment period
+currentVal = zeros(NoPeriods, NoStrats * NoModels); 
+tCost = zeros(NoPeriods-1, NoStrats * NoModels)
+toDay = 0;
+
+for t = 1 : NoPeriods
+    
+    % Subset the returns and factor returns corresponding to the current
+    % calibration period.
+    periodReturns = table2array( returns( calStart <= dates & dates <= calEnd, :) );
+    periodFactRet = table2array( factorRet( calStart <= dates & dates <= calEnd, :) );
+    currentPrices = table2array( adjClose( ( calEnd - days(7) ) <= dates ... 
+                                                    & dates <= calEnd, :) )';
+    
+    % Subset the prices corresponding to the current out-of-sample test 
+    % period.
+    periodPrices = table2array( adjClose( testStart <= dates & dates <= testEnd,:) );
+    
+    % Set the initial value of the portfolio or update the portfolio value
+    if t == 1
+        currentVal= ones(1, 6);
+        currentVal(t,:) = initialVal;
+        
+        
+    else
+        for k = 1 : (NoStrats * NoModels)
+            temp = transpose(NoShares{k})* currentPrices;
+            currentVal(t,k) =   temp;
+            
+        end
+    end
+    
+    % Update counter for the number of observations per investment period
+    fromDay = toDay + 1;
+    toDay   = toDay + size(periodPrices,1);
+    
+    % Calculate 'mu' and 'Q' using the 3 factor models.
+    % Note: You need to write the code for the 3 factor model functions. 
+    for i = 1 : NoModels
+        
+        [mu{i}, Q{i}] = FMList{i}(periodReturns, periodFactRet);
+        
+    end
+            
+    % Optimize your portfolios to get the weights 'x'
+    % Note: You need to write the code for the 2 portfolio optimization 
+    % functions.
+    for i = 1 : NoModels
+        
+        % Define the target return
+        targetRet = mean(mu{i});
+        
+        for j = 1: NoStrats
+            
+             k = j + (i - 1) * 2;;
+            
+            x{k}(:,t) = invList{j}(mu{i}, Q{i}, targetRet, card); 
+            
+        end
+    end
+    
+    % Calculate the optimal number of shares of each stock you should hold
+    for k = 1 : NoStrats * NoModels
+        % Number of shares your portfolio holds per stock
+        NoShares{k} = x{k}(:,t) .* currentVal(t,k) ./ currentPrices;
+        
+        % Weekly portfolio value during the out-of-sample window
+        portfValue(fromDay:toDay,k) = periodPrices * NoShares{k};
+        
+        %REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+        % Calculate your transaction costs for the current rebalance
+        % period. The first period does not have any cost since you are
+        % constructing the portfolios for the 1st time. 
+        
+        if t ~= 1
+           
+            tCost(t-1, k) =   periodPrices(t,:)*abs((x{k}(:,t) - x{k}(:,t-1))*0.005)
+            
+        end
+        
+        NoSharesOld{k} = NoShares{k};
+        %REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+        
+    end
+
+    % Update your calibration and out-of-sample test periods
+    calStart = calStart + calmonths(6);
+    calEnd   = calStart + calmonths(12) - days(1);
+    
+    testStart = testStart + calmonths(6);
+    testEnd   = testStart + calmonths(6) - days(1);
+
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 4. Results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+% 4.1 Calculate the portfolio average return, variance (or standard 
+% deviation), and any other performance and/or risk metric you wish to 
+% include in your report.
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+
+
+plotDates = dates(dates >= datetime('2013-01-01'));
+portf_rets = zeros (length(plotDates)-1, NoStrats * NoModels);
+returns = zeros(6, 1)
+portf_var = zeros(6, 1)
+
+
+
+for k = 1 : NoModels * NoStrats
+    portf_rets(:, k) =  (portfValue(2:(length(plotDates)),k)- portfValue(1:(length(plotDates)-1),k)) ./ portfValue(1:(length(plotDates)-1),k) + ones(156, 1) ;
+    returns(k) = (geomean(portf_rets(:, k)))^52 -1
+    portf_var(k) = var( portf_rets(:, k))*52
+end
+
+
+
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+% 4.2 Plot the portfolio values 
+% 
+% Note: The code below plots all portfolios onto a single plot. However,
+% you may want to split this into multiple plots for clarity, or to
+% compare a subset of the portfolios. 
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+plotDates = dates(dates >= datetime('2013-01-01'));
+
+fig1 = figure(1);
+
+for k = 1 : NoModels * NoStrats
+    
+    plot( plotDates, portfValue(:,k) )
+    hold on
+    
+end
+
+legend(tags, 'Location', 'eastoutside','FontSize',12);
+datetick('x','dd-mmm-yyyy','keepticks','keeplimits');
+set(gca,'XTickLabelRotation',30);
+title('Portfolio value', 'FontSize', 14)
+ylabel('Value','interpreter','latex','FontSize',12);
+
+% Define the plot size in inches
+set(fig1,'Units','Inches', 'Position', [0 0 8, 5]);
+pos1 = get(fig1,'Position');
+set(fig1,'PaperPositionMode','Auto','PaperUnits','Inches',...
+    'PaperSize',[pos1(3), pos1(4)]);
+
+% If you want to save the figure as .pdf for use in LaTeX
+% print(fig1,'fileName','-dpdf','-r0');
+
+% If you want to save the figure as .png for use in MS Word
+print(fig1,'fileName','-dpng','-r0');
+
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+% 4.3 Plot the portfolio weights 
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+
+% MVO (CAPM) Plot
+fig2 = figure(2);
+area(x{1}')
+legend(tickers, 'Location', 'eastoutside','FontSize',12);
+title('MVO (CAPM) portfolio weights', 'FontSize', 14)
+ylabel('Weights','interpreter','latex','FontSize',12);
+xlabel('Rebalance period','interpreter','latex','FontSize',12);
+
+% Define the plot size in inches
+set(fig2,'Units','Inches', 'Position', [0 0 8, 5]);
+pos1 = get(fig2,'Position');
+set(fig2,'PaperPositionMode','Auto','PaperUnits','Inches',...
+    'PaperSize',[pos1(3), pos1(4)]);
+
+% If you want to save the figure as .pdf for use in LaTeX
+% print(fig2,'fileName2','-dpdf','-r0');
+
+% If you want to save the figure as .png for use in MS Word
+print(fig2,'fileName2','-dpng','-r0');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Program End
+##### SOURCE END #####
+--></body></html>
