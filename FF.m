@@ -25,36 +25,31 @@ for i = 2: nTempRows
     temp_betaCF(i-1,:) = temp(i,:);
 end
 betaCF = transpose(temp_betaCF);   
-  
-%Calculate matrix of factor loading multiplied by factor
+
+%Calculating matrix of sum of intercepts (alphas) and factors multiplied by
+%factor loading
+temp2 = X*temp;
+
+%Calculating residual matrix
+resid = returns - temp2;
+denom = N -nFactCols-1;
+%Calculating diagonal matrix of residuals
+D = zeros(n);
+    for i = 1:n
+       D(i,i) = sumsqr(resid(:,i))/ denom; 
+    end
+
+    
+% %Calculate matrix of factor loading multiplied by expected excess factor
 Beta_x_Fact = zeros(nTempRows-1,nTempCols);
 for i = 1:nFactCols
    Beta_x_Fact(i,:) = expExFactRet(i) * temp(i+1,:); 
 end
 sum_Beta_x_Fact = sum(Beta_x_Fact,1);
-%Calculate the epsilon for each asset
-epsilon = zeros(size(returns,1),size(returns,2));
-for i = 1:n
-    
-        epsilon(:,i) = returns(:,i) - (temp(1,n) + sum_Beta_x_Fact(i));
-    
-end
-
-denom = N -nFactCols-1;
-sigmaEp = zeros(n,1);
-for i = 1:n
-    res = 0;
-    for t = 1:N
-       res = res + (epsilon(t,i))^2; 
-    end
-    variance = res/denom;
-    sigmaEp(i,1) = variance;
-end 
-% Calculate the asset expected excess returns, mu
-mu = transpose(alpha) + transpose(sum_Beta_x_Fact);
-% Calculate the diagonal matrix of residuals and the asset covariance 
-% matrix
-D = diag(sigmaEp);
+mu = transpose(alpha) + transpose(sum_Beta_x_Fact)
+%temp2
+temp3 = geomean(temp2+1,1)-1;
+mu_2 = transpose(temp3)
 %Calculating the factor covariance matrix
 F = cov(factRet);
 %Calculating the asset covariance matrix
@@ -64,4 +59,3 @@ Q = betaCF *F*transpose(betaCF) + D;
     %----------------------------------------------------------------------
     
 end
- 
